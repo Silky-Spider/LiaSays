@@ -80,10 +80,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap Colours" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7o-wu-WFZ">
+                                <rect key="frame" x="114.5" y="141" width="91" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Hku-AJ-TS9"/>
+                                    <constraint firstAttribute="width" constant="91" id="hcH-kc-0yH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="K2V-9s-mKM" secondAttribute="trailing" constant="117" id="22G-NN-Z9s"/>
+                            <constraint firstItem="B7o-wu-WFZ" firstAttribute="top" secondItem="E5Z-Pp-7Z7" secondAttribute="bottom" constant="19" id="27T-LS-ZfE"/>
+                            <constraint firstItem="B7o-wu-WFZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eGB-QU-tDK"/>
                             <constraint firstItem="K2V-9s-mKM" firstAttribute="top" secondItem="Dor-Ui-zPV" secondAttribute="bottom" constant="37" id="fOR-qs-c4D"/>
                             <constraint firstItem="E5Z-Pp-7Z7" firstAttribute="top" secondItem="Dor-Ui-zPV" secondAttribute="bottom" constant="37" id="gBN-t3-skM"/>
                             <constraint firstItem="Dor-Ui-zPV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kKX-1b-hHH"/>
