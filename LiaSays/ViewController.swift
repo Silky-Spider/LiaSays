@@ -1,6 +1,7 @@
 //
 //  ViewController.swift
 //  LiaSays
+// 	-- A Simon Says lookalike
 //
 //  Created by Carlos on 2017-12-01.
 //  Copyright © 2017 Carlos. All rights reserved.
