@@ -16,6 +16,9 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view, typically from a nib.
 	}
 
+	
+	// Button controls
+	
 	@IBAction func redButton(_ sender: UIButton) {
 		print("red")
 	}
