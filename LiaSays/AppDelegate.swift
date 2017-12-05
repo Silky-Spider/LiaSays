@@ -7,6 +7,34 @@
 //
 
 import UIKit
+import AudioToolbox
+
+/********************************************************************************
+**	 System sounds
+**
+*********************************************************************************/
+var redBeep: SystemSoundID = 0
+var blueBeep: SystemSoundID = 0
+var greenBeep: SystemSoundID = 0
+var yellowBeep: SystemSoundID = 0
+
+let playSounds = true
+
+func createSound(_ fileName: String, withExtension fileExtension: String? = ".mp3") -> SystemSoundID {
+	var sound: SystemSoundID = 0
+	
+	if let soundURL = Bundle.main.url(forResource: fileName, withExtension: fileExtension) {
+		AudioServicesCreateSystemSoundID(soundURL as CFURL, &sound)
+	}
+	
+	return sound
+}
+
+func playSound(_ sound: SystemSoundID) {
+	if !playSounds { return }
+	AudioServicesPlaySystemSound(sound)
+}
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-		// Override point for customization after application launch.
+		redBeep = createSound("red")
+		blueBeep = createSound("blue")
+		greenBeep = createSound("green")
+		yellowBeep = createSound("yellow")
+		
 		return true
 	}
 
