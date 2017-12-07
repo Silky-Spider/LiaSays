@@ -45,6 +45,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eob-81-1d5" userLabel="Red">
                                         <rect key="frame" x="190" y="5" width="180" height="157"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.001567089115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="20"/>
@@ -60,6 +63,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7A-Zn-nKb">
                                         <rect key="frame" x="5" y="5" width="180" height="157"/>
                                         <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="20"/>
@@ -90,6 +96,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sNd-uM-Neq">
                                         <rect key="frame" x="190" y="167" width="180" height="161.5"/>
                                         <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="20"/>
@@ -138,21 +147,37 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haS-nL-bun">
-                                <rect key="frame" x="131.5" y="186" width="112" height="73"/>
+                                <rect key="frame" x="111.5" y="186" width="152" height="73"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="112" id="e6d-WI-Pob"/>
+                                    <constraint firstAttribute="width" constant="152" id="e6d-WI-Pob"/>
                                     <constraint firstAttribute="height" constant="73" id="ttB-GJ-CBQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="61"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9c-bT-1fp">
+                                <rect key="frame" x="112" y="186" width="152" height="73"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="152" id="31k-li-ZNN"/>
+                                    <constraint firstAttribute="height" constant="73" id="VRN-8D-lAj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="89"/>
+                                <state key="normal" title="▶︎">
+                                    <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="playButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WPT-G1-dxd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="q9c-bT-1fp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="58v-ty-BTf"/>
                             <constraint firstItem="Dor-Ui-zPV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.25" id="BOD-Db-V2J"/>
                             <constraint firstItem="K2V-9s-mKM" firstAttribute="top" secondItem="Dor-Ui-zPV" secondAttribute="bottom" constant="20" id="Ffi-cI-VgB"/>
                             <constraint firstItem="TBB-gD-gvh" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="L6d-yq-hxH"/>
+                            <constraint firstItem="q9c-bT-1fp" firstAttribute="top" secondItem="K2V-9s-mKM" secondAttribute="bottom" constant="33" id="LFq-AP-rel"/>
                             <constraint firstItem="K2V-9s-mKM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="22" id="TWe-c8-UUH"/>
                             <constraint firstItem="haS-nL-bun" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="U0i-8R-Ojm"/>
                             <constraint firstItem="haS-nL-bun" firstAttribute="top" secondItem="K2V-9s-mKM" secondAttribute="bottom" constant="33" id="U7M-mk-Qki"/>
@@ -166,8 +191,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="blueButton" destination="sNd-uM-Neq" id="MqP-TO-gFP"/>
                         <outlet property="countLabel" destination="haS-nL-bun" id="UDb-wq-AqO"/>
+                        <outlet property="greenButton" destination="Y7A-Zn-nKb" id="RZv-t9-BuH"/>
+                        <outlet property="levelLabel" destination="E5Z-Pp-7Z7" id="rDb-o2-NfT"/>
                         <outlet property="levelNumberLabel" destination="K2V-9s-mKM" id="ZkC-Dm-AEM"/>
+                        <outlet property="playButton" destination="q9c-bT-1fp" id="mBl-mY-Z6e"/>
+                        <outlet property="redButton" destination="Eob-81-1d5" id="3im-39-7Dl"/>
+                        <outlet property="yellowButton" destination="vWQ-Xt-VzW" id="cT2-n4-1Pt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

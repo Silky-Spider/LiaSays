@@ -13,10 +13,12 @@ import AudioToolbox
 **	 System sounds
 **
 *********************************************************************************/
-var redBeep: SystemSoundID = 0
-var blueBeep: SystemSoundID = 0
-var greenBeep: SystemSoundID = 0
-var yellowBeep: SystemSoundID = 0
+var redBeep: SystemSoundID!
+var blueBeep: SystemSoundID!
+var greenBeep: SystemSoundID!
+var yellowBeep: SystemSoundID!
+var startBeep: SystemSoundID!
+var bloopBeep: SystemSoundID!
 
 let playSounds = true
 
@@ -47,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		blueBeep = createSound("blue")
 		greenBeep = createSound("green")
 		yellowBeep = createSound("yellow")
+		startBeep = createSound("start")
+		bloopBeep = createSound("bloop")
 		
 		return true
 	}
