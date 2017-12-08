@@ -121,10 +121,11 @@ class ViewController: UIViewController {
 		let duration = 0.2
 		UIView.animate(withDuration: duration, animations: {
 			button.backgroundColor = UIColor.black
-		})
-		UIView.animate(withDuration: duration, animations: {
-			button.backgroundColor = colour
-		})
+		}) { (true) in
+			UIView.animate(withDuration: duration, animations: {
+				button.backgroundColor = colour
+			})
+		}
 	}
 	
 	func gameOver() {
@@ -143,7 +144,7 @@ class ViewController: UIViewController {
 		maxCount = 1
 		createSequence(lengthOf: maxSequence)
 
-		playSound(startBeep)
+//		playSound(startBeep)
 		showSequence()
 	}
 
