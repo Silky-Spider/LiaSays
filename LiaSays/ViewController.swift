@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 	let green = UIColor.green
 	let yellow = UIColor.yellow
 	
-	let maxSequence = 100 // they get 100 they WIN!
+	let maxSequence = 100 // they get to maxSequence they WIN!
 	var level = 2					// how hard is the sequence (corresponds to number of colours*2)
 	var sequence = [Colour]()	// the random sequence of colours
 	var numberOfColours = 0		// level * 2
@@ -28,6 +28,9 @@ class ViewController: UIViewController {
 	var maxCount = 0					// the number of colours in current sequence
 	var playing = false				// has the game started?
 	
+	var flashTimer = Timer()
+	var nextSequence = 0
+
 	@IBOutlet weak var levelLabel: UILabel! // TEMP -- don't need once more levels added
 	@IBOutlet weak var levelNumberLabel: UILabel!
 	@IBOutlet weak var countLabel: UILabel!
@@ -44,13 +47,9 @@ class ViewController: UIViewController {
 		levelLabel.isHidden = true
 		levelNumberLabel.isHidden = true
 		// TEMP -- only one level (2) for now
-
-		count = 0
-		maxCount = 1
-
+	
 		numberOfColours = level * 2
 		levelNumberLabel.text = String(level)
-		createSequence(lengthOf: maxSequence)
 
 		}
 
@@ -78,16 +77,7 @@ class ViewController: UIViewController {
 	}
 
 	
-	// Button controls
-	@IBAction func playButton(_ sender: UIButton) {
-			playButton.isHidden = true
-			playing = true
-			playSound(startBeep)
-			showSequence()
-	}
 	
-	var flashTimer = Timer()
-	var nextSequence = 0
 	
 	func showSequence() {
 		print("----- \(maxCount)")
@@ -137,6 +127,26 @@ class ViewController: UIViewController {
 		})
 	}
 	
+	func gameOver() {
+		playSound(bloopBeep)
+		playing = false
+		playButton.isHidden = false
+		countLabel.text = ""
+	}
+	
+	// ------ Button controls ------
+	
+	@IBAction func playButton(_ sender: UIButton) {
+		playButton.isHidden = true
+		playing = true
+		count = 0
+		maxCount = 1
+		createSequence(lengthOf: maxSequence)
+
+		playSound(startBeep)
+		showSequence()
+	}
+
 	@IBAction func redButton(_ sender: UIButton) {
 		if !playing {return}
 		if sequence[count] == Colour.red {
@@ -144,8 +154,7 @@ class ViewController: UIViewController {
 			playSound(redBeep)
 			flash(button: redButton, colour: red)
 		} else {
-			playSound(bloopBeep)
-			playing = false
+			gameOver()
 		}
 	}
 	
@@ -156,8 +165,7 @@ class ViewController: UIViewController {
 			playSound(greenBeep)
 			flash(button: greenButton, colour: green )
 		} else {
-			playSound(bloopBeep)
-			playing = false
+			gameOver()
 		}
 	}
 	
@@ -168,8 +176,7 @@ class ViewController: UIViewController {
 			playSound(yellowBeep)
 			flash(button: yellowButton, colour: yellow)
 		} else {
-			playSound(bloopBeep)
-			playing = false
+			gameOver()
 		}
 	}
 	
@@ -180,8 +187,7 @@ class ViewController: UIViewController {
 			playSound(blueBeep)
 			flash(button: blueButton, colour: blue)
 		} else {
-			playSound(bloopBeep)
-			playing = false
+			gameOver()
 		}
 	}
 	
