@@ -149,7 +149,10 @@ class ViewController: UIViewController {
 	}
 
 	@IBAction func redButton(_ sender: UIButton) {
-		if !playing {return}
+		if !playing {
+			playSound(redBeep)
+			return
+		}
 		if sequence[count] == Colour.red {
 			updateCount()
 			playSound(redBeep)
@@ -160,7 +163,10 @@ class ViewController: UIViewController {
 	}
 	
 	@IBAction func greenButton(_ sender: UIButton) {
-		if !playing {return}
+		if !playing {
+			playSound(greenBeep)
+			return
+		}
 		if sequence[count] == Colour.green {
 			updateCount()
 			playSound(greenBeep)
@@ -171,7 +177,10 @@ class ViewController: UIViewController {
 	}
 	
 	@IBAction func yellowButton(_ sender: UIButton) {
-		if !playing {return}
+		if !playing {
+			playSound(yellowBeep)
+			return
+		}
 		if sequence[count] == Colour.yellow {
 			updateCount()
 			playSound(yellowBeep)
@@ -182,7 +191,10 @@ class ViewController: UIViewController {
 	}
 	
 	@IBAction func blueButton(_ sender: UIButton) {
-		if !playing {return}
+		if !playing {
+			playSound(blueBeep)
+			return
+		}
 		if sequence[count] == Colour.blue {
 			updateCount()
 			playSound(blueBeep)
