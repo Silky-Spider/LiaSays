@@ -19,6 +19,7 @@ var greenBeep: SystemSoundID!
 var yellowBeep: SystemSoundID!
 var startBeep: SystemSoundID!
 var bloopBeep: SystemSoundID!
+var silence: SystemSoundID!
 
 let playSounds = true
 
@@ -51,6 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		yellowBeep = createSound("yellow")
 		startBeep = createSound("start")
 		bloopBeep = createSound("bloop")
+		silence = createSound("silence")
 		
 		return true
 	}

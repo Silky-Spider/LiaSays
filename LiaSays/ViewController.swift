@@ -15,6 +15,11 @@ class ViewController: UIViewController {
 		case red = 0, green, blue, yellow
 	}
 	
+	let red = UIColor.red
+	let blue = UIColor.blue
+	let green = UIColor.green
+	let yellow = UIColor.yellow
+	
 	let maxSequence = 100 // they get 100 they WIN!
 	var level = 2					// how hard is the sequence (corresponds to number of colours*2)
 	var sequence = [Colour]()	// the random sequence of colours
@@ -53,10 +58,10 @@ class ViewController: UIViewController {
 		sequence = []
 		for _ in 0..<lengthOf {
 			switch Int(arc4random_uniform(UInt32(numberOfColours))) {
-			case 0: sequence.append(.green)
-			case 1:sequence.append(.red)
-			case 2: sequence.append(.yellow)
-			default: sequence.append(.blue)
+			case 0: sequence.append(.red)
+			case 1:sequence.append(.green)
+			case 2: sequence.append(.blue)
+			default: sequence.append(.yellow)
 			}
 		}
 //		print("\(sequence)")
@@ -81,29 +86,63 @@ class ViewController: UIViewController {
 			showSequence()
 	}
 	
+	var flashTimer = Timer()
+	var nextSequence = 0
+	
 	func showSequence() {
 		print("----- \(maxCount)")
-		for s in 0..<maxCount {
-			flash(colour: sequence[s])
-			}
+		nextSequence = 0
+		flashTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self , selector: #selector(ViewController.flashControl), userInfo: nil, repeats: true)
 	}
 	
-	func flash(colour: Colour) {
-		switch colour {
-		case .red: print("red")
-		case .green: print("green")
-		case .blue: print("blue")
-		default: print("yellow")
+	
+	@objc func flashControl() {
+		print("flashing colour \(self.sequence[nextSequence].rawValue)", terminator: ": " )
+		
+		switch sequence[nextSequence] {
+		case .red:
+			print("red")
+			playSound(redBeep)
+			flash(button: redButton, colour: red)
+		case .blue:
+			print("blue")
+			playSound(blueBeep)
+			flash(button: blueButton, colour: blue)
+		case .green:
+			print("green")
+			playSound(greenBeep)
+			flash(button: greenButton, colour: green)
+		case .yellow:
+			print("yellow")
+			playSound(yellowBeep)
+			flash(button: yellowButton, colour: yellow)
+		}
+		
+		nextSequence += 1
+		if nextSequence == maxCount {
+			print("got to last sequence")
+			flashTimer.invalidate()
 		}
 	}
 	
 	
+	
+	func flash(button: UIButton, colour: UIColor) {
+		let duration = 0.2
+		UIView.animate(withDuration: duration, animations: {
+			button.backgroundColor = UIColor.black
+		})
+		UIView.animate(withDuration: duration, animations: {
+			button.backgroundColor = colour
+		})
+	}
 	
 	@IBAction func redButton(_ sender: UIButton) {
 		if !playing {return}
 		if sequence[count] == Colour.red {
 			updateCount()
 			playSound(redBeep)
+			flash(button: redButton, colour: red)
 		} else {
 			playSound(bloopBeep)
 			playing = false
@@ -115,6 +154,7 @@ class ViewController: UIViewController {
 		if sequence[count] == Colour.green {
 			updateCount()
 			playSound(greenBeep)
+			flash(button: greenButton, colour: green )
 		} else {
 			playSound(bloopBeep)
 			playing = false
@@ -126,6 +166,7 @@ class ViewController: UIViewController {
 		if sequence[count] == Colour.yellow {
 			updateCount()
 			playSound(yellowBeep)
+			flash(button: yellowButton, colour: yellow)
 		} else {
 			playSound(bloopBeep)
 			playing = false
@@ -137,6 +178,7 @@ class ViewController: UIViewController {
 		if sequence[count] == Colour.blue {
 			updateCount()
 			playSound(blueBeep)
+			flash(button: blueButton, colour: blue)
 		} else {
 			playSound(bloopBeep)
 			playing = false

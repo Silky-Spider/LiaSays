@@ -42,7 +42,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TBB-gD-gvh">
                                 <rect key="frame" x="0.0" y="333.5" width="375" height="333.5"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eob-81-1d5" userLabel="Red">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eob-81-1d5" userLabel="Red Button">
                                         <rect key="frame" x="190" y="5" width="180" height="157"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.001567089115" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal">
