@@ -20,7 +20,7 @@ class ViewController: UIViewController {
 	let green = UIColor.green
 	let yellow = UIColor.yellow
 	
-	let maxSequence = 100 // they get to maxSequence they WIN!
+	let maxSequence = 99 // they get to maxSequence (+1) they WIN!
 	var level = 2					// how hard is the sequence (corresponds to number of colours*2)
 	var sequence = [Colour]()	// the random sequence of colours
 	var numberOfColours = 0		// level * 2
@@ -81,14 +81,21 @@ class ViewController: UIViewController {
 	
 	func showSequence() {
 		print("----- \(maxCount)")
-		nextSequence = 0
-		flashTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self , selector: #selector(ViewController.flashControl), userInfo: nil, repeats: true)
+		nextSequence = -3 // creates absolute(nextSequence) * .5 second pause
+		flashTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self , selector: #selector(flashControl), userInfo: nil, repeats: true)
 	}
 	
 	
 	@objc func flashControl() {
+		nextSequence += 1
+		if nextSequence < 0 { return } // creates a pause before starting first colour
+		if nextSequence == maxCount {
+			print("got to last sequence")
+			flashTimer.invalidate()
+			return
+		}
+//		print(nextSequence)
 		print("flashing colour \(self.sequence[nextSequence].rawValue)", terminator: ": " )
-		
 		switch sequence[nextSequence] {
 		case .red:
 			print("red")
@@ -108,11 +115,7 @@ class ViewController: UIViewController {
 			flash(button: yellowButton, colour: yellow)
 		}
 		
-		nextSequence += 1
-		if nextSequence == maxCount {
-			print("got to last sequence")
-			flashTimer.invalidate()
-		}
+	
 	}
 	
 	
