@@ -48,7 +48,7 @@ class ViewController: UIViewController {
 		levelNumberLabel.isHidden = true
 		// TEMP -- only one level (2) for now
 	
-		numberOfColours = level * 2
+        numberOfColours = level * 2
 		levelNumberLabel.text = String(level)
 
 		}
@@ -58,7 +58,7 @@ class ViewController: UIViewController {
 		for _ in 0..<lengthOf {
 			switch Int(arc4random_uniform(UInt32(numberOfColours))) {
 			case 0: sequence.append(.red)
-			case 1:sequence.append(.green)
+			case 1: sequence.append(.green)
 			case 2: sequence.append(.blue)
 			default: sequence.append(.yellow)
 			}
@@ -66,21 +66,23 @@ class ViewController: UIViewController {
 //		print("\(sequence)")
 	}
 	
-	func updateCount() {
+    func updateCount() {
 		count += 1
-		countLabel.text = String(count)
-		if count == maxCount { // give them the next sequence
+		if count >= maxCount { // give them the next sequence
 			count = 0
 			maxCount += 1
 			showSequence()
 		}
+        refreshCount()
 	}
 
-	
-	
+    func refreshCount() {
+        countLabel.text = String(format: "%d/%d", count, maxCount);
+    }
 	
 	func showSequence() {
 		print("----- \(maxCount)")
+        assert( !flashTimer.isValid, "Timer already underway!" )
 		nextSequence = -3 // creates absolute(nextSequence) * .5 second pause
 		flashTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self , selector: #selector(flashControl), userInfo: nil, repeats: true)
 	}
@@ -135,23 +137,30 @@ class ViewController: UIViewController {
 		playSound(bloopBeep)
 		playing = false
 		playButton.isHidden = false
-		countLabel.text = ""
+        countLabel.isHidden = true
 	}
 	
 	// ------ Button controls ------
 	
 	@IBAction func playButton(_ sender: UIButton) {
 		playButton.isHidden = true
+        countLabel.isHidden = false
 		playing = true
 		count = 0
 		maxCount = 1
-		createSequence(lengthOf: maxSequence)
+
+        refreshCount()
+        
+        createSequence(lengthOf: maxSequence)
 
 //		playSound(startBeep)
 		showSequence()
 	}
 
 	@IBAction func redButton(_ sender: UIButton) {
+        if flashTimer.isValid {
+            return
+        }
 		if !playing {
 			playSound(redBeep)
 			return
@@ -166,6 +175,9 @@ class ViewController: UIViewController {
 	}
 	
 	@IBAction func greenButton(_ sender: UIButton) {
+        if flashTimer.isValid {
+            return
+        }
 		if !playing {
 			playSound(greenBeep)
 			return
@@ -180,6 +192,9 @@ class ViewController: UIViewController {
 	}
 	
 	@IBAction func yellowButton(_ sender: UIButton) {
+        if flashTimer.isValid {
+            return
+        }
 		if !playing {
 			playSound(yellowBeep)
 			return
@@ -194,7 +209,10 @@ class ViewController: UIViewController {
 	}
 	
 	@IBAction func blueButton(_ sender: UIButton) {
-		if !playing {
+        if flashTimer.isValid {
+            return
+        }
+        if !playing {
 			playSound(blueBeep)
 			return
 		}
